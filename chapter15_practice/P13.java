@@ -14,37 +14,45 @@ import java.util.Scanner;
 
 public class P13
 {
-  public static String fileName = "war-and-peace.txt";
+  public static String fileName = "war-and-peace.txt"; // file to use
+
   public static void main(String[] args)
   throws FileNotFoundException
   {
+    // timer starts
     long startTime_ts = System.currentTimeMillis();
+    // use tree set
     testTreeSet();
+    // timer ends
     long endTime_ts = System.currentTimeMillis();
     System.out.println("treeSet took " + (endTime_ts - startTime_ts)*0.001 + " seconds");
 
     long startTime_hs = System.currentTimeMillis();
+    // use hash set
     testHashSet();
     long endTime_hs = System.currentTimeMillis();
     System.out.println("hashSet took " + (endTime_hs - startTime_hs)*0.001 + " seconds");
-
-
   }
+
+
   public static void testTreeSet()
   throws FileNotFoundException
   {
+    // load tree set
     Set<String> tree_set = new TreeSet<String>();
+    // load file
     Scanner in = new Scanner(new File(fileName));
-    in.useDelimiter("[^a-zA-Z]+"); // separates words
+    // separates words
+    in.useDelimiter("[^a-zA-Z]+");
 
-    System.out.println("adding words to hash set");
+    System.out.println("adding words to tree set");
     while(in.hasNext())
     {
+      // add each word
       String word = in.next();
       tree_set.add(word);
     }
-    System.out.println("finished adding "+tree_set.size()+" words to hash set");
-
+    System.out.println("finished adding "+tree_set.size()+" words to tree set");
   }
 
   public static void testHashSet() throws FileNotFoundException
@@ -56,8 +64,8 @@ public class P13
     System.out.println("adding words to hash set");
     while(in.hasNext())
     {
+      // add each word
       String word = in.next();
-
       hash_set.add(word);
     }
     System.out.println("finished adding "+hash_set.size()+" words to hash set");
