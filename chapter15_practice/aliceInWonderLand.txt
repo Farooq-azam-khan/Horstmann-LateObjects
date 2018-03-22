@@ -1,0 +1,16 @@
+hi
+this
+file
+wil
+have
+two
+mispleed
+words
+that
+can
+be
+found
+with
+the
+spellchekc.java
+file
