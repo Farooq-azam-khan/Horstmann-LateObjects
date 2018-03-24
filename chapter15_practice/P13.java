@@ -43,7 +43,7 @@ public class P13
     // load file
     Scanner in = new Scanner(new File(fileName));
     // separates words
-    in.useDelimiter("[^a-zA-Z]+");
+    // in.useDelimiter("[^a-zA-Z]+");
 
     System.out.println("adding words to tree set");
     while(in.hasNext())
@@ -59,7 +59,7 @@ public class P13
   {
     Set<String> hash_set = new HashSet<String>();
     Scanner in = new Scanner(new File(fileName));
-    in.useDelimiter("[^a-zA-Z]+"); // separates words
+    // in.useDelimiter("[^a-zA-Z]+"); // separates words
 
     System.out.println("adding words to hash set");
     while(in.hasNext())
