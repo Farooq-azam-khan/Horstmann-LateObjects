@@ -1,0 +1,12 @@
+number  1:           32.00
+number  2:           54.00
+number  3:           67.50
+number  4:           29.00
+number  5:           35.00
+number  6:           80.00
+number  7:          115.00
+number  8:           44.50
+number  9:          100.00
+number 10:           65.00
+------------------------------
+Total:              622.00
