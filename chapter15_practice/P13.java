@@ -53,6 +53,7 @@ public class P13
       tree_set.add(word);
     }
     System.out.println("finished adding "+tree_set.size()+" words to tree set");
+    in.close(); 
   }
 
   public static void testHashSet() throws FileNotFoundException
@@ -69,5 +70,6 @@ public class P13
       hash_set.add(word);
     }
     System.out.println("finished adding "+hash_set.size()+" words to hash set");
+    in.close();
   }
 }

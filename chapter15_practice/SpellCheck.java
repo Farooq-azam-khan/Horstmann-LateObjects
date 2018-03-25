@@ -36,6 +36,7 @@ public class SpellCheck
       words.add(in.next().toLowerCase());
     }
 
+    in.close(); 
     return words;
   }
 }

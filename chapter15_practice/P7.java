@@ -35,6 +35,8 @@ public class P7
       words.add(word);
     }
 
+    in.close(); 
+
     return words;
 
   }

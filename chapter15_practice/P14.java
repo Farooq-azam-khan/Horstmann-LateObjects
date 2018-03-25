@@ -54,6 +54,8 @@ public class P14
       String delim = in.next().trim();
       identifier.put(delim, test);
     }
+
+    in.close();
   }
 
   public static void get_line_numbers()
@@ -80,10 +82,6 @@ public class P14
         }
       }
       identifier.put(key, line_number);
-
-
     }
   }
-
-
 }
