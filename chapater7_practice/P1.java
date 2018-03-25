@@ -32,6 +32,7 @@ public class P1
       words+=in.next();
     }
     in.close();
+    out.close(); 
     System.out.println(words);
 
 

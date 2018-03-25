@@ -29,8 +29,8 @@ public class P3
   {
     try
     {
-      Scanner in = new Scanner(new File(inputFileName));
       PrintWriter out = new PrintWriter(outputFileName);
+      Scanner in = new Scanner(new File(inputFileName));
 
       int lineNum = 0;
       while(in.hasNextLine())
@@ -38,11 +38,11 @@ public class P3
         lineNum++;
         String line = in.nextLine();
         line = "/* " + lineNum + " */ " + line;
-        out.println(line); 
+        out.println(line);
       }
 
-      in.close();
-      out.close();
+      in.close(); // will never close here
+      out.close(); // will never close here
 
     }
     catch(FileNotFoundException e)
