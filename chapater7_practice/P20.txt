@@ -1,0 +1,95 @@
+/*
+P7.20
+Write a program that reads the file rc.txt
+and uses the data to calculate the rise time.
+Approximate B by the voltage in the last line of the file,
+and find the data points that
+are closest to 0.05 × B and 0.95 × B.
+*/
+
+import java.util.Scanner;
+import java.util.NoSuchElementException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class P20
+{
+  public static void main(String[] args)
+  {
+    try
+    {
+      Scanner in = new Scanner(new File("p19_output_file.txt"));
+      // skip three lines
+      in.nextLine();
+      in.nextLine();
+      in.nextLine();
+
+      //  time ,  voltage
+      Map<Double, Double> volts = new HashMap<Double, Double>();
+
+      while(in.hasNext())
+      {
+        Double time = Double.valueOf(in.next());
+        in.next();
+        Double voltage = Double.valueOf(in.next());
+
+        volts.put(time, voltage);
+      }
+
+      // get max value of time
+      Set<Double> time_set = volts.keySet();
+      Double max_t = 0.0;
+      for (Double time : time_set)
+      {
+        if (time > max_t)
+        {
+          max_t = time;
+        }
+      }
+
+      // get value of B 0.05B and 0.095B
+      Double B = volts.get(max_t);
+      System.out.println("max: " + max_t + " B: " + B);
+
+      Double v1 = 0.05 * B;
+      Double v2 = 0.95 * B;
+
+      System.out.printf("v1(0.05 * B): %.2f\n", v1);
+      System.out.printf("v2(0.95 * B): %.2f\n", v2);
+
+      // find the corresponding datapoint close to v1 and v2
+      Double offset = 1.0;
+      for (Double time:time_set)
+      {
+        Double volt = volts.get(time);
+        if (isCloseToV(v1, volt))
+        {
+          System.out.print("found value for v1:");
+          System.out.printf("(%3.1f, %.2f)\n", time, volt);
+        }
+        else if (isCloseToV(v2, volt))
+        {
+          System.out.print("found value for v2:");
+          System.out.printf("(%3.1f, %.2f)\n", time, volt);
+        }
+      }
+    }
+    catch(FileNotFoundException e)
+    {
+      System.out.println(e.getMessage());
+    }
+    catch(NoSuchElementException e)
+    {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  public static boolean isCloseToV(Double pred_v, Double volt)
+  {
+    Double offset = 0.01;
+    return (volt - offset) <= pred_v && pred_v <= (volt + offset);
+  }
+}
