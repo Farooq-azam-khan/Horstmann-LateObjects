@@ -23,6 +23,11 @@ public class Question
     this.answer_text = at;
   }
 
+  public void addText(String text)
+  {
+    this.question_text += text; 
+  }
+
   public String encryptAnswer(String unencrypted_answer)
   {
     // TODO : use encryption algorithm to encrypt answer
