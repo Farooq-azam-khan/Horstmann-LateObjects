@@ -23,9 +23,14 @@ public class Question
     this.answer_text = at;
   }
 
+  public String getAnswer()
+  {
+    return this.answer_text;
+  }
+
   public void addText(String text)
   {
-    this.question_text += text; 
+    this.question_text += text;
   }
 
   public String encryptAnswer(String unencrypted_answer)
@@ -43,5 +48,10 @@ public class Question
   public void display()
   {
     System.out.println(question_text);
+  }
+
+  public String toString()
+  {
+    return getClass().getName() + " " + this.getQuestion();
   }
 }

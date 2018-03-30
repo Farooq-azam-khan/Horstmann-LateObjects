@@ -8,11 +8,15 @@ Rectangle class that has getPerimeter and getArea methods.
 Do not add any instance variables.
 In the constructor, call the setLocation and setSize methods of the Rectangle
 class. Provide a program that tests the methods that you supplied.
+
+P9.11
+Repeat Exercise P9.10, but in the BetterRectangle constructor, invoke the superclass
+constructor.
 */
 
 import java.awt.Rectangle;
 
-public class P10
+public class P10P11
 {
   public static void main(String[] args)
   {
@@ -27,8 +31,13 @@ class BetterRectangle extends Rectangle
 {
   public BetterRectangle(int x, int y, int width, int height)
   {
-    setLocation(x, y); 
+    setLocation(x, y);
     setSize(width, height);
+
+    // super.setLocation(x, y);
+    // super.setSize(width, height);
+
+    // Rectangle(x, y, width, height); 
   }
 
   public double getPerimeter()
