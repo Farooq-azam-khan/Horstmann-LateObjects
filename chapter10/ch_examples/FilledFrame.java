@@ -4,6 +4,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class FilledFrame extends JFrame
 {
   // frame info
@@ -22,7 +25,7 @@ public class FilledFrame extends JFrame
 
     this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
     // sets the title of frame
-    this.setTitle("welcome to section 10.1");
+    // this.setTitle("welcome to chapter 10");
   }
   private void createComponents()
   {
@@ -31,10 +34,23 @@ public class FilledFrame extends JFrame
 
     // JComponents
     button = new JButton("click button");
+    ActionListener listenForButton = new ButtonClickListener();
+    button.addActionListener(listenForButton);
     label = new JLabel("display label");
 
     panel.add(button);
     panel.add(label);
     this.add(panel);
   }
+
+
+  // action event listenrs for button
+  public class ButtonClickListener implements ActionListener
+  {
+    public void actionPerformed(ActionEvent event)
+    {
+      label.setText("button was clicked");
+    }
+  }
+
 }

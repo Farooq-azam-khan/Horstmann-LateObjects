@@ -1,3 +1,9 @@
+/**
+R10.4
+What happens if you add a button and a label directly to a JFrame without using a
+JPanel? What happens if you add the label first? Try it out, by modifying the program
+in Section 10.1.2, and report your observations.
+*/
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;

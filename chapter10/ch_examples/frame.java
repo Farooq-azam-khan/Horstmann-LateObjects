@@ -7,11 +7,12 @@ import javax.swing.JTextArea;
 public class frame
 {
 
+
+
   public static void main(String[] args)
   {
     // constructs the frame
-    JFrame frame = new FilledFrame();
-
+    JFrame frame = new InvestmentFrame();
     // closes application when frame is closed
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     // shows the frame
