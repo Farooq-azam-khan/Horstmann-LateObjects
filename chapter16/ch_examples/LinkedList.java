@@ -52,7 +52,7 @@ class LinkedList
 
     // return reference to that node
     return element;
-  }
+  } // end of removeFirst method
 
   public ListIterator listIterator()
   {
@@ -78,7 +78,6 @@ class LinkedList
     {
       position = null;
       previous = null;
-
     }
 
     public Object next()
@@ -115,7 +114,7 @@ class LinkedList
         // check if the next element is not null
         return this.position.next != null;
       }
-    }
+    } // end of hasNext element
 
     // remove element at the current iteration position
     public void remove()
@@ -187,6 +186,5 @@ class LinkedList
     }
     ret += "}";
     return ret;
-
-  }
+  } // end of tostring method
 }
