@@ -6,9 +6,6 @@ import javax.swing.JTextArea;
 
 public class frame
 {
-
-
-
   public static void main(String[] args)
   {
     // constructs the frame
