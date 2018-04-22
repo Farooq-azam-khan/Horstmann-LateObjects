@@ -3,15 +3,22 @@ public class StackLinkedList
   private Node first;
 
   // stack is LIFO (last in first out)
+  // same as addFirst()
   public void push(Object element)
   {
-    Node newNode = new Node();
-    newNode.data = element;
-    // point next to what first.next is pointing to
-    newNode.next = first;
-    first = newNode;
+    first = new Node(element, first);
+    // newNode.data = element;
+    // // point next to what first.next is pointing to
+    // newNode.next = first;
+    // first = newNode;
+  }
+  public Object peek()
+  {
+    return first.data; 
   }
 
+  // remove the last added element in stack (ie the first element in linked list)
+  // same as removeFirst()
   public Object pop()
   {
     if (first == null)
@@ -31,10 +38,21 @@ public class StackLinkedList
   {
     return first==null;
   }
+
+
+  /**
+  class: Node
+  */
   private class Node
   {
     public Object data;
     public Node next;
+    public Node(){};
+    public Node(Object data, Node next)
+    {
+      this.data = data;
+      this.next = next;
+    }
   }
 
   public String toString()

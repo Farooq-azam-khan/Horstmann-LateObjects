@@ -9,6 +9,7 @@ public class StackArrayList
     currentSize = 0;
   }
 
+  // same as add last
   public void push(Object element)
   {
     growIfNecessary();
@@ -17,7 +18,13 @@ public class StackArrayList
     this.currentSize++;
   }
 
+  public Object peek()
+  {
+    return buffer[this.currentSize-1]; 
+  }
+
   // removes the last element in arraylist
+  // same as remove last
   public Object pop()
   {
     Object lastElement = buffer[this.currentSize-1];
@@ -46,7 +53,7 @@ public class StackArrayList
     {
       if (i==0)
       {
-        ret += buffer[i] + " (first in)"; 
+        ret += buffer[i] + " (first in)";
       }
       else
       {

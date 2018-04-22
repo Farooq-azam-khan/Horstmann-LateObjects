@@ -5,24 +5,24 @@ public class StackTester
     StackLinkedList stkLL = new StackLinkedList();
     StackArrayList stkAL = new StackArrayList();
 
-    stkLL.push(35);
-    stkLL.push(23);
-    stkLL.push("my name");
-    stkLL.push(10);
-    stkLL.push(10);
+    stkLL.push("first element");
+    stkLL.push("second element");
+    stkLL.push("third element");
+    stkLL.push("fourth element");
+    stkLL.push("fifth element");
     stkLL.push("clank");
 
-    stkAL.push(35);
-    stkAL.push(23);
-    stkAL.push("my name");
-    stkAL.push(10);
-    stkAL.push(10);
+    stkAL.push("first element");
+    stkAL.push("second element");
+    stkAL.push("third element");
+    stkAL.push("fourth element");
+    stkAL.push("fifth element");
     stkAL.push("clank");
 
     System.out.println(stkLL);
     System.out.println(stkAL);
 
-    System.out.println(stkLL.pop()  + " == " + stkAL.pop()); 
+    System.out.println(stkLL.pop()  + " == " + stkAL.pop());
 
 
   }

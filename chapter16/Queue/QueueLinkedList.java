@@ -7,21 +7,28 @@ public class QueueLinkedList
   // first in first out (FIFO)
   public void addLast(Object element)
   {
+    // create a node pointing to null
     Node newNode = new Node(element, null);
+    // check if there is noting in the linked list
     if (first == null)
     {
+      // first element will be newNode
       first = newNode;
+      // last element will first element (in this case)
       last = first;
     }
     else
     {
+      // last will point to the newNode
       last.next = newNode;
+      // last will be assigned the new node
       last = newNode;
-
     }
-
     currentSize++;
-
+  }
+  public Object peek()
+  {
+    return first.data; 
   }
   // same as removeFirst
   public Object removeFirst()
