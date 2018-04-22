@@ -2,7 +2,7 @@ public interface ListIterator
 {
   Object next();
   boolean hasNext();
+  Object remove();
   void add(Object element);
-  void remove();
-  void set(Object element); 
+  void set(Object element);
 }
