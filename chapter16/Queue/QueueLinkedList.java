@@ -5,39 +5,40 @@ public class QueueLinkedList
   private int currentSize = 0;
 
   // first in first out (FIFO)
-  public void addFirst(Object element)
+  public void addLast(Object element)
   {
-    first = new Node(element, first);
-    if (currentSize == 0)
+    Node newNode = new Node(element, null);
+    if (first == null)
     {
+      first = newNode;
       last = first;
     }
-    currentSize++;
-  }
-
-  public Object removeFirst()
-  {
-    Node tempFirst = first;
-    Node previous;
-    Object lastData = new Object();
-    while(true)
+    else
     {
-      previous = tempFirst;
-      tempFirst = tempFirst.next;
-      if (tempFirst == null)
-      {
-        break;
-      }
-      // find the last element
-      if (tempFirst == last)
-      {
-        lastData = last.data;
-        last = previous;
-        // System.out.println("last is now: " + last.data);
-      }
+      last.next = newNode;
+      last = newNode;
+
     }
 
-    return lastData;
+    currentSize++;
+
+  }
+  // same as removeFirst
+  public Object removeFirst()
+  {
+    if (first == null)
+    {
+      System.out.println("null pointer");
+      return null;
+    }
+    else
+    {
+      Object first_element = first.data;
+      // remove here
+      first = first.next;
+      currentSize--;
+      return first_element;
+    }
   }
 
   private class Node
@@ -62,7 +63,7 @@ public class QueueLinkedList
     {
       if (tempFirst == last)
       {
-        ret += tempFirst.data + "(first in)";
+        ret += tempFirst.data;
         break;
       }
       else
