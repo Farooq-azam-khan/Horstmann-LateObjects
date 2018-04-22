@@ -22,122 +22,118 @@ public class P1
 {
   public static void main(String[] args)
   {
-    String input_file_name = "";
-    String output_file_name = "";
-    boolean isDecryption = false;
     String key = "";
-
-    if (args.length <= 3 || args.length > 4)
+    boolean encrypt_msg = true;
+    String inputFileName = "";
+    String outputFileName = "" ;
+    if (args.length <=3 || args.length >5)
     {
       usage();
       System.exit(0);
     }
     else
     {
-
       if (args[0].equals("-d"))
       {
-        isDecryption = true;
-        key = args[1].substring(1+1+1);
-        input_file_name = args[2];
-        output_file_name = args[3];
+        encrypt_msg = false;
+        if (args[1].equals("-k"))
+        {
+          key = args[2];
+        }
+        // System.out.println("args[3]: " + args[3]);
+        inputFileName = args[3];
+        outputFileName = args[4];
       }
-      else if (args[0].contains("-k"))
+      else if (args[0].equals("-k"))
       {
-        isDecryption = false;
-        key = args[0].substring(1+1+1);
-        input_file_name = args[3];
-        output_file_name = args[4];
+        key = args[1];
+        inputFileName = args[2];
+        outputFileName = args[3];
       }
+
     }
+    System.out.println("key: " + key +
+    " inputfile: " + inputFileName + " output: " + outputFileName+
+    " encrypting: " + encrypt_msg);
 
     try
     {
-      File input_file = new File(input_file_name);
+      File inputFile = new File(inputFileName);
+      Scanner in = new Scanner(inputFile);
+      PrintWriter outputFile = new PrintWriter(outputFileName);
 
-      PrintWriter output_file = new PrintWriter(output_file_name);
-      Scanner in = new Scanner(input_file);
+      RandomMonoalphabetCipher cipher = new RandomMonoalphabetCipher(key);
 
-      String msg = "";
-      String key = removeDupliateLetters(key);
-      ImprovedCaesarCipher icc = new ImprovedCaesarCipher(key);
-
-      while(in.hasNextLine())
+      if (encrypt_msg)
       {
-        msg += in.nextLine();
-        String encrypted_msg = icc.encrypt(msg);
+        outputFile.println("encrypted message: ");
+        while(in.hasNextLine())
+        {
+          String line = in.nextLine();
 
-        out.println(encrypted_msg);
+          Scanner line_processor = new Scanner(line);
+          line_processor.useDelimiter("[^a-z]+");
+          while(line_processor.hasNext())
+          {
+            String word = line_processor.next();
+            outputFile.print(cipher.encrypt(word) + " ");
+          }
+
+          outputFile.println("");
+        }
+
+      }
+      else
+      {
+        outputFile.println("decrypted message: ");
+        while(in.hasNextLine())
+        {
+          String line = in.nextLine();
+          // System.out.println("line: " + line);
+          Scanner line_processor = new Scanner(line);
+          line_processor.useDelimiter("[^a-z]+");
+          while(line_processor.hasNext())
+          {
+            String word = line_processor.next();
+            outputFile.print(cipher.decrypt(word) + " ");
+          }
+
+          outputFile.println("");
+        }
       }
 
-      in.close();
-      out.close();
+      outputFile.close();
+      in.close(); 
+
     }
     catch(FileNotFoundException e)
     {
       System.out.println(e.getMessage());
     }
-    catch(IOException e)
-    {
-      System.out.println(e.getMessage());
-    }
-  }
 
-  public static void removeDublicateLetters(String key)
-  {
-    int result = "";
-    for (int i=0; i<key.length(); i++)
-    {
-      String c = String.valueOf(key.charAt(i));
-      if (!result.contains(c))
-      {
-        result += c;
-      }
-    }
-    return c;
+
+    // RandomMonoalphabetCipher cipher = new RandomMonoalphabetCipher("feather");
+    // System.out.println(cipher.encrypt("hello"));
+    // System.out.println(cipher.decrypt("yhuup"));
+
+
+
   }
   public static void usage()
   {
-    System.out.println("java P1 -d=decrypt -k=key [key] [input].txt [output].txt");
-  }
-}
+    System.out.println("java P1 [-d] [-k] [inputfile] [outputfile]");
 
-class ImprovedCaesarCipher
-{
-  String key;
-  public int alphabet_length = 26;
-  public char base;
-  public ImprovedCaesarCipher(String key)
-  {
-    this.key = key;
   }
 
-  private char getBase(char c)
+  public static void encryptLine(String line)
   {
-    if (msg.charAt(i) > 'a' && msg.charAt(i) < 'z')
+    System.out.println("line: " + line);
+    Scanner line_processor = new Scanner(line);
+    line_processor.useDelimiter("[^a-z]+");
+    while(line_processor.hasNext())
     {
-      base = 'a';
+      String word = line_processor.next();
+      System.out.println("word: " + word);
     }
-    else if (msg.charAt(i) > 'A' && msg.charAt(i) < 'Z')
-    {
-      base = 'A';
-    }
-    return base;
-  }
-  public String encrypt(String msg)
-  {
-    for (int i=0; i<msg.length; i++)
-    {
-      base = getBase(msg.charAt(i));
-    }
-
-  }
-  public String decrypt(String msg, String key)
-  {
-
-  }
-  public String crack(String msg)
-  {
-
   }
 }

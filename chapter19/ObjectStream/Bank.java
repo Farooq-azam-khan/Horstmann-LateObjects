@@ -1,28 +1,45 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+   This bank contains a collection of bank accounts.
+*/
 public class Bank implements Serializable
 {
-  private ArrayList<BankAccount> accounts;
-  public Bank()
-  {
-    accounts = new ArrayList<BankAccount>();
-  }
+   private ArrayList<BankAccount> accounts;
 
-  public void addAccount(BankAccount ba)
-  {
-    accounts.add(ba);
-  }
+   /**
+      Constructs a bank with no bank accounts.
+   */
+   public Bank()
+   {
+      accounts = new ArrayList<BankAccount>();
+   }
 
-  public BankAccount find(int accountNumber)
-  {
-    for (BankAccount account : accounts)
-    {
-      if (account.getAccountNumber() == accountNumber)
+   /**
+      Adds an account to this bank.
+      @param a the account to add
+   */
+   public void addAccount(BankAccount a)
+   {
+      accounts.add(a);
+   }
+
+   /**
+      Finds a bank account with a given number.
+      @param accountNumber the number to find
+      @return the account with the given number, or null if there
+      is no such account
+   */
+   public BankAccount find(int accountNumber)
+   {
+      for (BankAccount a : accounts)
       {
-        return account;
+         if (a.getAccountNumber() == accountNumber) // Found a match
+         {
+            return a;
+         }
       }
-    }
-    return null;
-  }
+      return null; // No match in the entire array list
+   }
 }
