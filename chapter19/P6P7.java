@@ -1,8 +1,19 @@
+/**
+P19.6 Modify the BankSimulator program so that it is possible to delete an account.
+To delete a record from the data file, fill the record with zeroes.
+
+P19.7 The data file in Exercise P19.6 may end up with many deleted records that take up
+space. Write a program that compacts such a file, moving all active records to the
+beginning and shortening the file length. Hint: Use the setLength method of the
+RandomAccessFile class to truncate the file length. Look up the method’s behavior in
+the API documentation.
+*/
+// TODO: NOT YET FINISHED
 import java.io.RandomAccessFile;
 import java.util.Scanner;
 import java.io.IOException;
 
-public class P6
+public class P6P7
 {
   public static void main(String[] args)
   {
@@ -33,7 +44,7 @@ public class P6
           int position = data.find(accountNum);
           if (position > 0)
           {
-            data.write(new BankAccount(0, 0)); 
+            data.write(new BankAccount(0, 0));
           }
 
         }
